@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <form action="" class="form" id="login">
+            <h1 class="form__title">Login</h1>
+            <div class="form__message  form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Username or email">
+                <div class="for__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a href="#" class="form__link">Forgot your password?</a>
+            </p>
+            <p class="form__text">
+                <a href="#" id="linkCreateAccount" class="form__link">Don't have an account? Create an account</a>
+            </p>
+        </form>
+
+        <form action="" class="form  form--hidden" id="createAccount">
+            <h1 class="form__title">Create Account</h1>
+            <div class="form__message  form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Username">
+                <div class="for__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Email Address">
+                <div class="for__input-error-message"></div>
+            </div>
+            <div class="form__input-group password-requirements">
+                <ul>
+                    <li>Password must be at least 8 character</li>
+                    <li>Must use at least one special character (ie. '!', "&", "@", etc.)</li>
+                    <li>Must use at least one number</li>
+                </ul>
+            </div>
+            <div class="form__input-group">
+                <div class="form__input-error-message" id="first_password-error"></div>
+                <input type="password" class="form__input" id="first-password" autofocus placeholder="Password">
+            </div>
+            <div class="form__input-group">
+                <div class="form__input-error-message" id="second_password-error"></div>
+                <input type="password" class="form__input" id="second-password" autofocus placeholder="Confirm password">
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a href="#" id="linkLogin" class="form__link">Already have an account? Sign in</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="./login.js"></script>
+</body>
+</html>
