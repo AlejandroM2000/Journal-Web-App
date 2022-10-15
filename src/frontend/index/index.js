@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
-    <title>Document</title>
-</head>
-<body>
+let journalWrapper = document.querySelector(".container");
+export function renderPage() {
+    const notebookArea = `        
     <section class="content" id="left">
         <header>
             <textarea name="date" class="date" id="date" cols="10" rows="1" placeholder="Enter the date"></textarea>
@@ -24,6 +17,6 @@
         <div class="content"></div>
             <textarea name="journal-content"  class="journal-content" id="right-page" cols="30" rows="10" placeholder="Enter your daily entry"></textarea>
         </div>
-    </section>
-</body>
-</html>
+    </section>`;
+    
+}

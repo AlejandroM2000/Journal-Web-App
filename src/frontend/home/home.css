@@ -78,17 +78,17 @@ table tr.weekday__names{
     font-size: 1.75rem;
 }
 
-tr.dates__row >td.date{
+tr.dates__row>td.date{
     text-align: center;
     padding-bottom: 2rem;
     font-size: 1.5rem;
-}
-tr.dates__row >td.date>a{
-    width:10rem;
-    height: 10rem;
     border-radius: 0.99rem;
+    min-width: 1rem;
+    min-height: 1rem;
+
 }
-tr.dates__row >td.date>a:hover {
+
+tr.dates__row >td.date:hover {
     background-color: var(--color-primary);
     cursor: pointer;
     transition: background 1s;

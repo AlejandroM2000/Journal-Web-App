@@ -26,24 +26,38 @@ const days = new Map([
 const d = new Date();
 const firstYear = 2022;
 const monthTable = document.querySelector(".weekdays__wrapper");
+const datesOfMonth = document.querySelectorAll(".date");
 let currMonth = new Date().getMonth();
 let currYear = new Date().getFullYear();
 
-
+/**
+ * Increase the global month variable
+ */
 function increaseMonth()  {
     if(currMonth < 11){
         currMonth = currMonth + 1;
+    } else{
+        currMonth = 0;
     }
 
 }
 
+/**
+ * Decrease the global month variable
+ */
 function decreaseMonth()  {
    if(currMonth > 0){
     currMonth = currMonth - 1;
+   } else {
+    currMonth = 11;
    }
 }
 
-
+/**
+ * 
+ * @param {Number} year The current year we want to render the calendar for 
+ * @param {Number} monthNum the current month we want to render
+ */
 function renderCalendar(year, monthNum) {
     const firstDay = new Date(year, monthNum, 1);
     const lastDay = new Date(year, monthNum + 1, 0);
@@ -53,7 +67,7 @@ function renderCalendar(year, monthNum) {
     let dayNum = firstDay.getDay();
     let rowElement ='';
     for(let i = 0; i < dayNum; i++){
-        rowElement += '<td class="date"></td>';
+        rowElement += '<td class="empty"></td>';
     }
     while(dateNum <= lastDay.getDate()){
         rowElement += `<td class="date"><a>${dateNum}</a></td>`
@@ -61,7 +75,7 @@ function renderCalendar(year, monthNum) {
         let day = currDay.getDay();
         if(currDay.getDate() == lastDay.getDate()){
             for(let i = currDay.getDay(); i < 7; i++){
-                rowElement += '<td class="date"></td>';
+                rowElement += '<td class="empty"></td>';
             }
             day = 6;
         }   
@@ -94,3 +108,9 @@ document.querySelector("#left-arrow").addEventListener("click", function() {
     })
     renderCalendar(currYear, currMonth)
 });
+
+datesOfMonth.forEach(function(date){
+    date.addEventListener("click", function() {
+        
+    })
+})

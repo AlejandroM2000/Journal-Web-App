@@ -1,3 +1,11 @@
+// const { response } = require("express");
+const email = document.querySelector("#login > div.form__input-group > input#email");
+const loginPassword = document.querySelector("#login > div.form__input-group > input#password")
+const emailRegex =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const registerBtn = document.querySelector("#createAccount > button.form__button");
+const emailReg = document.querySelector("#createAccount > div.form__input-group > input#first-email");
+const pwReg  = document.querySelector("#createAccount > div.form__input-group > #first-password");
+
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#login");
     const createAccountForm = document.querySelector("#createAccount");
@@ -28,9 +36,6 @@ document.querySelector("#second-password").addEventListener("blur", function() {
 document.querySelector("#first-password").addEventListener("blur", function () {
     const pwText = this.value;
     let errorMessage = document.querySelector("#first_password-error");
-    console.log(pwText.length < 8)
-    console.log(pwText.search(/[!@#\$%\^&\*_]/i) < 0)
-    console.log(pwText.search(/[0-9]/) < 0)
     if(pwText.length < 8 || pwText.search(/[!@#\$%\^&\*_]/i) < 0 || pwText.search(/[0-9]/) < 0){
         errorMessage.innerHTML = '<p>Your password does not meet one or more of the password requirements</p>';
         if(this.classList.contains("form__input--success")){
@@ -56,4 +61,46 @@ document.querySelector("#first-password").addEventListener("focus", function(){
     }
 })
 
+
+document.querySelector("#login > button.form__button").addEventListener("click", function(e) {
+    e.preventDefault();
+    if(email.value.length == 0 || !email.value.match(emailRegex)){
+        document.querySelector("form#login > .form__message--error").innerHTML = "<p>The email or password is incorrect</p>"
+    } else {
+        document.querySelector("form#login > .form__message--error").innerHTML = ""
+        fetch('http://localhost:3000/login', {
+            method: "POST",
+            body: JSON.stringify({
+                email: emailReg.value,
+                password: loginPassword.value
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+         })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json);
+        });
+    }
+})
+
+registerBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    fetch('http://localhost:3000/register', {
+            method: "POST",
+            body: JSON.stringify({
+                email: emailReg.value,
+                password: pwReg.value
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+         })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json);
+        })
+        .then()
+})
 
