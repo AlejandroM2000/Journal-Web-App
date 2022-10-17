@@ -65,7 +65,7 @@ document.querySelector("#first-password").addEventListener("focus", function(){
 document.querySelector("#login > button.form__button").addEventListener("click", function(e) {
     e.preventDefault();
     if(email.value.length == 0 || !email.value.match(emailRegex)){
-        document.querySelector("form#login > .form__message--error").innerHTML = "<p>The email or password is incorrect</p>"
+        document.querySelector("form#login > .form__message--error").innerHTML = "<p>The email is not properly formatted</p>"
     } else {
         document.querySelector("form#login > .form__message--error").innerHTML = ""
         fetch('http://localhost:3000/login', {
@@ -78,7 +78,12 @@ document.querySelector("#login > button.form__button").addEventListener("click",
                 'Content-type': 'application/json; charset=UTF-8'
             }
          })
-        .then(response => response.json())
+        .then(response =>{
+            if(response.status == 201){
+                alert("nice");
+            }
+            response.json();
+        })
         .then(json => {
             console.log(json);
         });
@@ -101,6 +106,5 @@ registerBtn.addEventListener("click", function(e) {
         .then(json => {
             console.log(json);
         })
-        .then()
 })
 
