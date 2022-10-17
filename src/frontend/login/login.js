@@ -71,7 +71,7 @@ document.querySelector("#login > button.form__button").addEventListener("click",
         fetch('http://localhost:3000/login', {
             method: "POST",
             body: JSON.stringify({
-                email: emailReg.value,
+                email: email.value,
                 password: loginPassword.value
             }),
             headers: {
@@ -79,7 +79,7 @@ document.querySelector("#login > button.form__button").addEventListener("click",
             }
          })
         .then(response =>{
-            if(response.status == 201){
+            if(response.status == 200){
                 alert("nice");
             }
             response.json();

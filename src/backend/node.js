@@ -50,12 +50,13 @@ app.post("/login", (req, res) => {
       console.log(hashedPw);
       res.status(500).json({ status: 500, error: `Server error: ${err.message}`});
     } else {
+      console.log();
       if(results.length){
-        // if(bcrypt.compareSync(pw, results)){
+        if(bcrypt.compareSync(pw, results[0]["password"])){
           res.status(200).json({status: 200, message:"User found"});
-        // } else {
-        //   res.status(401).json({status:401, message: "Incorrect Password"});
-        // }
+        } else {
+          res.status(401).json({status:401, message: "Incorrect Password"});
+        }
 
       } else {
         res.status(401).json({status:401, message: "User not found"});
