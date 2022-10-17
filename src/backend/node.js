@@ -19,10 +19,10 @@ app.listen(port, () => {
 })
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'alex',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
     password: process.env.DB_PW,
-    database: 'user_info'
+    database: process.env.DB_NAME,
   });
   
 connection.connect((err) => {
@@ -78,7 +78,6 @@ app.post("/register", (req, res) => {
       } else {
         bcrypt.hash(pw, saltRounds)
         .then(function(hash) {
-          // Store hash in your password DB.
           connection.query(`INSERT INTO users (email, password) 
           VALUES (?, ?);`, [email, hash], function(err) {
               if(err){

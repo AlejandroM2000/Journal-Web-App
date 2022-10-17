@@ -5,6 +5,8 @@ const emailRegex =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const registerBtn = document.querySelector("#createAccount > button.form__button");
 const emailReg = document.querySelector("#createAccount > div.form__input-group > input#first-email");
 const pwReg  = document.querySelector("#createAccount > div.form__input-group > #first-password");
+const loginPwBtn = document.querySelector("#login > button.form__button");
+const sessionUser = window.sessionStorage
 
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#login");
@@ -62,7 +64,7 @@ document.querySelector("#first-password").addEventListener("focus", function(){
 })
 
 
-document.querySelector("#login > button.form__button").addEventListener("click", function(e) {
+loginPwBtn.addEventListener("click", function(e) {
     e.preventDefault();
     if(email.value.length == 0 || !email.value.match(emailRegex)){
         document.querySelector("form#login > .form__message--error").innerHTML = "<p>The email is not properly formatted</p>"
