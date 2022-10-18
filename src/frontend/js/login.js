@@ -82,7 +82,7 @@ loginPwBtn.addEventListener("click", function(e) {
          })
         .then(response =>{
             if(response.status == 200){
-                alert("nice");
+                window.location.href = '../views/home.html';
             }
             response.json();
         })

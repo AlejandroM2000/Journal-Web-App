@@ -29,6 +29,7 @@ const monthTable = document.querySelector(".weekdays__wrapper");
 const datesOfMonth = document.querySelectorAll(".date");
 let currMonth = new Date().getMonth();
 let currYear = new Date().getFullYear();
+let currDate;
 
 /**
  * Increase the global month variable
@@ -90,6 +91,7 @@ function renderCalendar(year, monthNum) {
     }
 }
 
+
 document.addEventListener("DOMContentLoaded", renderCalendar(currYear, currMonth));
 
 document.querySelector("#right-arrow").addEventListener("click", function() {
@@ -111,6 +113,10 @@ document.querySelector("#left-arrow").addEventListener("click", function() {
 
 datesOfMonth.forEach(function(date){
     date.addEventListener("click", function() {
-        
+        let dateNum = date.querySelector('a').innerText;
+        let dateString = `${currMonth+1}/${dateNum}/${currYear}`;
+        fetch("http://localhost:3000/date", {
+            method: "GET"
+        })
     })
 })

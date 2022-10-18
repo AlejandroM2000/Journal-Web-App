@@ -28,17 +28,21 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err;
     console.log('Connected to MySQL Server!');
-    const query = `create table if not exists users(
-      id int primary key auto_increment,
-      email varchar(255)not null,
+    connection.query(`create table if not exists users(
+      email varchar(255) primary key not null,
       password varchar(255) not null
-    )`;
-  
-    connection.query(query, function(err, results, fields) {
+    )ENGINE=INNODB;`, function(err, results, fields) {
       if (err) {
         console.log(err.message);
       }
     });
+
+    connection.query(`create table if not exists user_journal(
+      useremail varchar(255) primary key,
+      date varchar(20) not null,
+      entry text not null,
+      FOREIGN KEY (useremail) REFERENCES users(email) ON DELETE RESTRICT ON UPDATE CASCADE
+    )ENGINE=INNODB;`)
 });
   
 
